@@ -1,0 +1,26 @@
+{
+  "name": "gdbots/crypto-bundle",
+  "homepage": "https://github.com/gdbots/crypto-bundle-php",
+  "description": "Symfony3 bundle that integrates defuse/php-encryption package.",
+  "type": "library",
+  "license": "Apache-2.0",
+  "require": {
+    "php": ">=5.6",
+    "defuse/php-encryption": "~2.0",
+    "symfony/symfony": "~3.1"
+  },
+  "require-dev": {
+    "composer/composer": "1.0.*@dev",
+    "phpunit/phpunit": "~4.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Gdbots\\Bundle\\CryptoBundle\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Gdbots\\Tests\\Bundle\\CryptoBundle\\": "tests"
+    }
+  }
+}
