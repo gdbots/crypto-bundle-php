@@ -1,7 +1,7 @@
 # Symfony App Files #
 ############
 *.cache
-bin/
+#bin/
 build/
 cache/
 logs/

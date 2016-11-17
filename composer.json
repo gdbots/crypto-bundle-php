@@ -22,5 +22,8 @@
     "psr-4": {
       "Gdbots\\Tests\\Bundle\\CryptoBundle\\": "tests"
     }
-  }
+  },
+  "bin": [
+    "bin/crypto-create-key"
+  ]
 }
