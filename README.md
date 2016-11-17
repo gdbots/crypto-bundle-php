@@ -8,26 +8,23 @@ crypto-bundle-php
 Symfony3 bundle that integrates [defuse/php-encryption](https://github.com/defuse/php-encryption) package.
 
 
-### Installation
+## Installation
 When first using this bundle you'll need to generate a crypto key and store it as 
 the kernel parameter `crypto_key`. 
 
-__Run the following command from the root of your project.__
-
+#### 1. Run the following command from the root of your project.
 ```bash
 vendor/bin/crypto-create-key
 ```
 
-__Save the generated key to `parameters.yml`__
-
+#### 2. Save the generated key to `parameters.yml`
 ```yaml
 parameters:
   crypto_key: 'your generated crypto key'
 ```
-> KEEP this key private and secure. 
+> __WARNING__: keep this key private and secure. 
 
-
-__Add GdbotsCryptoBundle to your Kernel__
+#### 3. Add `GdbotsCryptoBundle` to your `Kernel`
 ```php
 <?php
 
