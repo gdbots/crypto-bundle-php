@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Gdbots\Bundle\CryptoBundle\Twig;
 
@@ -6,22 +7,22 @@ use Defuse\Crypto\Crypto;
 use Defuse\Crypto\Exception\CryptoException;
 use Defuse\Crypto\Key;
 
-class CryptoExtension extends \Twig_Extension
+final class CryptoExtension extends \Twig_Extension
 {
     /** @var Key */
-    protected $key;
+    private $key;
 
     /** @var bool */
-    protected $debug = false;
+    private $debug = false;
 
     /**
-     * @param Key $key
+     * @param Key  $key
      * @param bool $debug
      */
-    public function __construct(Key $key, $debug = false)
+    public function __construct(Key $key, bool $debug = false)
     {
         $this->key = $key;
-        $this->debug = (bool) $debug;
+        $this->debug = $debug;
     }
 
     /**
@@ -31,7 +32,7 @@ class CryptoExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFilter('encrypt', [$this, 'encrypt']),
-            new \Twig_SimpleFilter('decrypt', [$this, 'decrypt'])
+            new \Twig_SimpleFilter('decrypt', [$this, 'decrypt']),
         ];
     }
 
@@ -53,7 +54,7 @@ class CryptoExtension extends \Twig_Extension
      * @throws \Exception
      * @throws CryptoException
      */
-    public function encrypt($string)
+    public function encrypt(string $string): ?string
     {
         if (empty($string)) {
             return null;
@@ -78,7 +79,7 @@ class CryptoExtension extends \Twig_Extension
      * @throws \Exception
      * @throws CryptoException
      */
-    public function decrypt($string)
+    public function decrypt(string $string): ?string
     {
         if (empty($string)) {
             return null;
