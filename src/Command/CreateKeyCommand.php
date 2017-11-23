@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Gdbots\Bundle\CryptoBundle\Command;
 
@@ -7,7 +8,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class CreateKeyCommand extends Command
+final class CreateKeyCommand extends Command
 {
     /**
      * {@inheritdoc}
@@ -16,12 +17,11 @@ class CreateKeyCommand extends Command
     {
         $this
             ->setName('crypto:create-key')
-            ->setHelp('Creates a new encryption key using "Defuse\Crypto\Key::createNewRandomKey"')
-        ;
+            ->setHelp('Creates a new encryption key using "Defuse\Crypto\Key::createNewRandomKey"');
     }
 
     /**
-     * @param InputInterface $input
+     * @param InputInterface  $input
      * @param OutputInterface $output
      *
      * @return null

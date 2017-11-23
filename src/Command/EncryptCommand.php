@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Gdbots\Bundle\CryptoBundle\Command;
 
@@ -10,7 +11,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class EncryptCommand extends ContainerAwareCommand
+final class EncryptCommand extends ContainerAwareCommand
 {
     /**
      * {@inheritdoc}
@@ -21,18 +22,19 @@ class EncryptCommand extends ContainerAwareCommand
             ->setName('crypto:encrypt')
             ->setHelp('Encrypts the provided value and returns the string.')
             ->addOption('key', null, InputOption::VALUE_REQUIRED, 'Encryption key, if not supplied the "crypto_key" service will be used.')
-            ->addArgument('value', InputArgument::REQUIRED, 'The value to encrypt.')
-        ;
+            ->addArgument('value', InputArgument::REQUIRED, 'The value to encrypt.');
     }
 
     /**
-     * @param InputInterface $input
+     * @param InputInterface  $input
      * @param OutputInterface $output
      *
      * @return null
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $key = $input->getOption('key');
+
         if (!empty($key)) {
             $key = Key::loadFromAsciiSafeString($key);
         } else {
