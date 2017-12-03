@@ -8,6 +8,10 @@
   </parameters>
 
   <services>
+    <prototype namespace="Gdbots\Bundle\CryptoBundle\Command\" resource="../../Command/*">
+      <tag name="console.command"/>
+    </prototype>
+
     <service id="crypto_key" class="Defuse\Crypto\Key" public="true">
       <factory class="Defuse\Crypto\Key" method="loadFromAsciiSafeString"/>
       <argument>%crypto_key%</argument>

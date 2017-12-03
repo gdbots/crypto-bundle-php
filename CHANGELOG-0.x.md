@@ -2,6 +2,10 @@
 This changelog references the relevant changes done in 0.x versions.
 
 
+## v0.2.1
+* Register all commands in `Command` namespace using new Symfony 4 convention.
+
+
 ## v0.2.0
 __BREAKING CHANGES__
 
