@@ -2,7 +2,7 @@
   "name": "gdbots/crypto-bundle",
   "homepage": "https://github.com/gdbots/crypto-bundle-php",
   "description": "Symfony bundle that integrates defuse/php-encryption package.",
-  "type": "library",
+  "type": "symfony-bundle",
   "license": "Apache-2.0",
   "require": {
     "php": ">=7.1",
