@@ -6,8 +6,10 @@ namespace Gdbots\Bundle\CryptoBundle\Twig;
 use Defuse\Crypto\Crypto;
 use Defuse\Crypto\Exception\CryptoException;
 use Defuse\Crypto\Key;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
-final class CryptoExtension extends \Twig_Extension
+final class CryptoExtension extends AbstractExtension
 {
     /** @var Key */
     private $key;
@@ -31,8 +33,8 @@ final class CryptoExtension extends \Twig_Extension
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('encrypt', [$this, 'encrypt']),
-            new \Twig_SimpleFilter('decrypt', [$this, 'decrypt']),
+            new TwigFilter('encrypt', [$this, 'encrypt']),
+            new TwigFilter('decrypt', [$this, 'decrypt']),
         ];
     }
 
@@ -51,7 +53,7 @@ final class CryptoExtension extends \Twig_Extension
      *
      * @return string
      *
-     * @throws \Exception
+     * @throws \Throwable
      * @throws CryptoException
      */
     public function encrypt(string $string): ?string
@@ -62,7 +64,7 @@ final class CryptoExtension extends \Twig_Extension
 
         try {
             return Crypto::encrypt($string, $this->key);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             if ($this->debug) {
                 throw $e;
             }
@@ -76,7 +78,7 @@ final class CryptoExtension extends \Twig_Extension
      *
      * @return string
      *
-     * @throws \Exception
+     * @throws \Throwable
      * @throws CryptoException
      */
     public function decrypt(string $string): ?string
@@ -87,7 +89,7 @@ final class CryptoExtension extends \Twig_Extension
 
         try {
             return Crypto::decrypt($string, $this->key);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             if ($this->debug) {
                 throw $e;
             }

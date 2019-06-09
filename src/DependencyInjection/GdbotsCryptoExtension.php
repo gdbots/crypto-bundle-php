@@ -11,8 +11,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 final class GdbotsCryptoExtension extends Extension
 {
     /**
-     * @param array            $config
-     * @param ContainerBuilder $container
+     * {@inheritdoc}
      */
     public function load(array $config, ContainerBuilder $container)
     {
