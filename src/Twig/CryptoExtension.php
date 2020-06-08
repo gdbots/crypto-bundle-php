@@ -6,7 +6,7 @@ namespace Gdbots\Bundle\CryptoBundle\Twig;
 use Defuse\Crypto\Crypto;
 use Defuse\Crypto\Key;
 use Twig\Extension\AbstractExtension;
-use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 final class CryptoExtension extends AbstractExtension
 {
@@ -19,11 +19,11 @@ final class CryptoExtension extends AbstractExtension
         $this->debug = $debug;
     }
 
-    public function getFilters()
+    public function getFunctions()
     {
         return [
-            new TwigFilter('encrypt', [$this, 'encrypt']),
-            new TwigFilter('decrypt', [$this, 'decrypt']),
+            new TwigFunction('encrypt', [$this, 'encrypt']),
+            new TwigFunction('decrypt', [$this, 'decrypt']),
         ];
     }
 

@@ -26,7 +26,7 @@ final class DecryptCommand extends Command
     protected function configure()
     {
         $this
-            ->setHelp('Decrypts the provided value and returns the string.')
+            ->setDescription('Decrypts the provided value and returns the string.')
             ->addOption('key', null, InputOption::VALUE_REQUIRED, 'Encryption key, if not supplied the "crypto_key" service will be used.')
             ->addArgument('value', InputArgument::REQUIRED, 'The value to decrypt.');
     }

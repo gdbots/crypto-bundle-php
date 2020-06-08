@@ -11,7 +11,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-final class DecryptCommand extends Command
+final class EncryptCommand extends Command
 {
     protected static $defaultName = 'crypto:encrypt';
 
@@ -26,7 +26,7 @@ final class DecryptCommand extends Command
     protected function configure()
     {
         $this
-            ->setHelp('Encrypts the provided value and returns the string.')
+            ->setDescription('Encrypts the provided value and returns the string.')
             ->addOption('key', null, InputOption::VALUE_REQUIRED, 'Encryption key, if not supplied the "crypto_key" service will be used.')
             ->addArgument('value', InputArgument::REQUIRED, 'The value to encrypt.');
     }

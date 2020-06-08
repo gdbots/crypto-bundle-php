@@ -14,7 +14,7 @@ final class CreateKeyCommand extends Command
 
     protected function configure()
     {
-        $this->setHelp('Creates a new encryption key using "Defuse\Crypto\Key::createNewRandomKey"');
+        $this->setDescription('Creates a new encryption key using "Defuse\Crypto\Key::createNewRandomKey"');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

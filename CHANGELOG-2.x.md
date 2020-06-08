@@ -7,3 +7,4 @@ __BREAKING CHANGES__
 
 * Upgrade to support Symfony 5 and PHP 7.4.
 * Use new symfony bundle structure https://github.com/symfony/symfony/blob/master/UPGRADE-5.0.md
+* Change twig encrypt/decrypt from filters to functions.
