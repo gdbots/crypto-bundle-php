@@ -10,21 +10,16 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class CreateKeyCommand extends Command
 {
-    /**
-     * {@inheritdoc}
-     */
+    protected static $defaultName = 'crypto:create-key';
+
     protected function configure()
     {
-        $this
-            ->setName('crypto:create-key')
-            ->setHelp('Creates a new encryption key using "Defuse\Crypto\Key::createNewRandomKey"');
+        $this->setHelp('Creates a new encryption key using "Defuse\Crypto\Key::createNewRandomKey"');
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $output->writeln(Key::createNewRandomKey()->saveToAsciiSafeString());
+        return self::SUCCESS;
     }
 }
