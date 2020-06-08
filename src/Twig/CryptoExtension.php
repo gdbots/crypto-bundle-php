@@ -4,46 +4,27 @@ declare(strict_types=1);
 namespace Gdbots\Bundle\CryptoBundle\Twig;
 
 use Defuse\Crypto\Crypto;
-use Defuse\Crypto\Exception\CryptoException;
 use Defuse\Crypto\Key;
 use Twig\Extension\AbstractExtension;
-use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 final class CryptoExtension extends AbstractExtension
 {
-    /** @var Key */
-    private $key;
+    private Key $key;
+    private bool $debug = false;
 
-    /** @var bool */
-    private $debug = false;
-
-    /**
-     * @param Key  $key
-     * @param bool $debug
-     */
     public function __construct(Key $key, bool $debug = false)
     {
         $this->key = $key;
         $this->debug = $debug;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getFilters()
+    public function getFunctions()
     {
         return [
-            new TwigFilter('encrypt', [$this, 'encrypt']),
-            new TwigFilter('decrypt', [$this, 'decrypt']),
+            new TwigFunction('encrypt', [$this, 'encrypt']),
+            new TwigFunction('decrypt', [$this, 'decrypt']),
         ];
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'gdbots_crypto_extension';
     }
 
     /**
@@ -54,7 +35,6 @@ final class CryptoExtension extends AbstractExtension
      * @return string
      *
      * @throws \Throwable
-     * @throws CryptoException
      */
     public function encrypt(string $string): ?string
     {
@@ -69,6 +49,8 @@ final class CryptoExtension extends AbstractExtension
                 throw $e;
             }
         }
+
+        return null;
     }
 
     /**
@@ -79,7 +61,6 @@ final class CryptoExtension extends AbstractExtension
      * @return string
      *
      * @throws \Throwable
-     * @throws CryptoException
      */
     public function decrypt(string $string): ?string
     {
@@ -94,5 +75,7 @@ final class CryptoExtension extends AbstractExtension
                 throw $e;
             }
         }
+
+        return null;
     }
 }
