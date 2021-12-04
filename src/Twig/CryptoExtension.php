@@ -19,7 +19,7 @@ final class CryptoExtension extends AbstractExtension
         $this->debug = $debug;
     }
 
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('encrypt', [$this, 'encrypt']),
