@@ -10,13 +10,8 @@ use Twig\TwigFunction;
 
 final class CryptoExtension extends AbstractExtension
 {
-    private Key $key;
-    private bool $debug = false;
-
-    public function __construct(Key $key, bool $debug = false)
+    public function __construct(private Key $key, private bool $debug = false)
     {
-        $this->key = $key;
-        $this->debug = $debug;
     }
 
     public function getFunctions(): array
