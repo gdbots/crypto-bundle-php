@@ -22,15 +22,6 @@ final class CryptoExtension extends AbstractExtension
         ];
     }
 
-    /**
-     * Returns an encrypted string or null if it fails.
-     *
-     * @param string $string
-     *
-     * @return string
-     *
-     * @throws \Throwable
-     */
     public function encrypt(string $string): ?string
     {
         if (empty($string)) {
@@ -48,15 +39,6 @@ final class CryptoExtension extends AbstractExtension
         return null;
     }
 
-    /**
-     * Returns the decrypted data or null if it fails.
-     *
-     * @param string $string
-     *
-     * @return string
-     *
-     * @throws \Throwable
-     */
     public function decrypt(string $string): ?string
     {
         if (empty($string)) {
