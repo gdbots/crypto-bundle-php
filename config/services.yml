@@ -1,0 +1,26 @@
+parameters:
+  env(CRYPTO_KEY): 'notacryptokey'
+
+services:
+  Gdbots\Bundle\CryptoBundle\Command\:
+    resource: '../src/Command/*'
+    autoconfigure: true
+    autowire: true
+    tags:
+      - { name: 'console.command' }
+
+  crypto_key:
+    class: Defuse\Crypto\Key
+    public: true
+    factory: [Defuse\Crypto\Key, loadFromAsciiSafeString]
+    arguments:
+      - '%env(CRYPTO_KEY)%'
+
+  gdbots_crypto.twig.crypto_extension:
+    class: Gdbots\Bundle\CryptoBundle\Twig\CryptoExtension
+    public: false
+    arguments:
+      - '@crypto_key'
+      - '%kernel.debug%'
+    tags:
+      - { name: twig.extension }
